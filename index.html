@@ -58,7 +58,12 @@ h1 .green{color:var(--green)}
 .outline{border:1px solid var(--green);color:var(--green);border-radius:8px;padding:12px 22px;font-weight:800;font-size:14px}
 .community{text-align:center;padding:28px 0 70px}
 .community p{margin:0 0 14px;font-size:19px}.community b{color:var(--green)}
-.socials{display:flex;justify-content:center;gap:22px;color:#fff;font-size:26px}
+.socials{display:flex;justify-content:center;gap:16px;color:#fff}
+.pump-mini{width:22px;height:22px;border-radius:6px;background:#050505;color:var(--green);display:inline-grid;place-items:center;font-size:12px;font-weight:950;line-height:1}.social-icon{width:58px;height:58px;border:1px solid rgba(255,255,255,.15);border-radius:14px;display:grid;place-items:center;background:#0b0d0d;transition:.2s}
+.social-icon:hover{border-color:var(--green);color:var(--green);transform:translateY(-3px);box-shadow:0 10px 28px rgba(183,255,0,.08)}
+.x-icon{font-size:29px;font-weight:800}
+.telegram-icon svg{width:29px;height:29px;fill:currentColor}
+.pump-icon span{width:30px;height:30px;border-radius:8px;background:var(--green);color:#050505;display:grid;place-items:center;font-size:18px;font-weight:950;line-height:1}
 .section{padding:105px 0;border-top:1px solid rgba(255,255,255,.07)}
 .section-head{max-width:760px}.eyebrow{color:var(--green);font-size:12px;letter-spacing:2.5px;font-weight:900}
 .section h2{font-size:54px;letter-spacing:-3px;margin:12px 0 15px}.section .intro{color:var(--muted);line-height:1.7;font-size:17px}
@@ -95,7 +100,7 @@ footer{padding:34px 0;color:#6e7172;border-top:1px solid rgba(255,255,255,.07);f
     <a class="active" href="#home">Home</a><a href="#about">About</a><a href="#tokenomics">Tokenomics</a>
     <a href="#roadmap">Roadmap</a><a href="#buy">How to Buy</a><a href="#faq">FAQ</a>
   </div>
-  <a class="nav-buy" id="navBuy" href="#">🚀 &nbsp;Buy on Pump.fun</a>
+  <a class="nav-buy" id="navBuy" href="#"><span class="pump-mini">P</span>&nbsp; Buy on Pump.fun</a>
 </div>
 </nav>
 
@@ -106,7 +111,7 @@ footer{padding:34px 0;color:#6e7172;border-top:1px solid rgba(255,255,255,.07);f
     <h1>BAD LUCK.<br><span class="green">GOOD<br>GAINS.</span></h1>
     <p class="lead">They said black cats bring misfortune. But a black cat is just a cat — <strong>not bad luck.</strong> We're here to challenge that old superstition and <strong>prove them wrong.</strong></p>
     <div class="actions">
-      <a class="btn primary" id="heroBuy" href="#">🚀 &nbsp;Buy on Pump.fun</a>
+      <a class="btn primary" id="heroBuy" href="#"><span class="pump-mini">P</span>&nbsp; Buy on Pump.fun</a>
       <a class="btn" href="#community">✈ &nbsp;Join Community</a>
     </div>
   </div>
@@ -131,7 +136,15 @@ footer{padding:34px 0;color:#6e7172;border-top:1px solid rgba(255,255,255,.07);f
 
 <section class="container community" id="community">
   <p>Join the <b>Blackcat</b> movement</p>
-  <div class="socials"><a href="https://x.com/BCATofficial" target="_blank">𝕏</a><a id="telegram" href="#">✈</a><a href="#">◉</a></div>
+  <div class="socials">
+  <a class="social-icon x-icon" href="https://x.com/BCATofficial" target="_blank" rel="noopener" aria-label="X">𝕏</a>
+  <a class="social-icon telegram-icon" id="telegram" href="https://t.me/Blackcatbca" target="_blank" rel="noopener" aria-label="Telegram">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.2 18.6 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.8l-4.9-1.5c-1.1-.3-1.1-1 .2-1.5L20.4 2c.9-.3 1.7.2 1.3 1.2Z"/></svg>
+  </a>
+  <a class="social-icon pump-icon" id="pumpSocial" href="#" aria-label="Pump.fun">
+    <span>P</span>
+  </a>
+</div>
 </section>
 
 <section class="section" id="about">
@@ -171,7 +184,7 @@ footer{padding:34px 0;color:#6e7172;border-top:1px solid rgba(255,255,255,.07);f
 <section class="section" id="buy">
 <div class="container">
   <div class="section-head"><div class="eyebrow">HOW TO BUY</div><h2>Catch the cat on-chain.</h2><p class="intro">Use the official Pump.fun link, verify the contract address and only trade what you can afford to lose. Meme coins are highly speculative.</p></div>
-  <div class="actions"><a class="btn primary" id="buyButton" href="#">🚀 &nbsp;Open Pump.fun</a></div>
+  <div class="actions"><a class="btn primary" id="buyButton" href="#"><span class="pump-mini">P</span>&nbsp; Open Pump.fun</a></div>
 </div>
 </section>
 
@@ -193,9 +206,10 @@ footer{padding:34px 0;color:#6e7172;border-top:1px solid rgba(255,255,255,.07);f
 <script>
 /* Replace these with your real launch details */
 const PUMP_FUN_URL = "#";
-const TELEGRAM_URL = "#";
+const TELEGRAM_URL = "https://t.me/Blackcatbca";
 ["navBuy","heroBuy","buyButton"].forEach(id=>document.getElementById(id).href=PUMP_FUN_URL);
 document.getElementById("telegram").href=TELEGRAM_URL;
+document.getElementById("pumpSocial").href=PUMP_FUN_URL;
 </script>
 </body>
 </html>
