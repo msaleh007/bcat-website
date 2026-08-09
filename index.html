@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BCAT — Blackcat</title>
+<meta name="description" content="BCAT — The black cat was never bad luck. We're here to prove them wrong.">
+<style>
+:root{
+  --bg:#020303; --panel:#0b0d0d; --panel2:#101212;
+  --text:#f7f7f7; --muted:#a2a5a6; --green:#b7ff00;
+  --border:rgba(255,255,255,.13); --red:#ff2727;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:
+  radial-gradient(circle at 78% 28%,rgba(183,255,0,.055),transparent 28%),
+  #020303;color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;
+background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+background-size:44px 44px;mask-image:linear-gradient(to bottom,#000,transparent 75%)}
+a{text-decoration:none;color:inherit}
+.container{width:min(1410px,calc(100% - 72px));margin:auto}
+nav{height:86px;border-bottom:1px solid rgba(255,255,255,.055);position:sticky;top:0;z-index:20;background:rgba(2,3,3,.84);backdrop-filter:blur(16px)}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand{display:flex;align-items:center;gap:11px;font-size:26px;font-weight:900;color:var(--green);letter-spacing:-1px}
+.brand img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.18)}
+.links{display:flex;align-items:center;gap:38px;color:#c6c7c8;font-size:15px}
+.links a{transition:.2s}.links a:hover,.links a.active{color:var(--green)}
+.nav-buy{border:1px solid var(--green);color:var(--green);border-radius:8px;padding:13px 20px;font-weight:800;font-size:14px}
+.hero{min-height:595px;display:grid;grid-template-columns:43% 57%;align-items:center}
+.hero-copy{padding-top:12px;position:relative;z-index:2}
+.kicker{font-size:14px;color:var(--green);font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+.kicker span{color:#777;margin:0 9px}
+h1{font-size:clamp(74px,7.4vw,118px);line-height:.82;letter-spacing:-7px;margin:26px 0 22px;font-weight:950}
+h1 .green{color:var(--green)}
+.lead{font-size:21px;line-height:1.45;color:#ddd;max-width:560px;margin:0}
+.lead strong{color:var(--green);font-weight:600}
+.actions{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.btn{height:60px;padding:0 28px;border-radius:10px;border:1px solid #3a3d3d;display:inline-flex;align-items:center;gap:10px;font-size:16px;font-weight:850;transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(183,255,0,.08)}
+.btn.primary{background:var(--green);border-color:var(--green);color:#050505}
+.hero-art{height:560px;display:flex;align-items:center;justify-content:flex-end;overflow:hidden;position:relative}
+.hero-art img{width:100%;max-width:905px;height:595px;object-fit:cover;object-position:center;filter:drop-shadow(0 25px 55px rgba(183,255,0,.08))}
+.features{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:18px;background:linear-gradient(180deg,#101212,#0a0c0c);overflow:hidden}
+.feature{min-height:116px;padding:25px 28px;display:flex;gap:18px;align-items:center;border-right:1px solid var(--border)}
+.feature:last-child{border-right:0}
+.icon{width:48px;height:48px;flex:none;display:grid;place-items:center;color:var(--green);font-size:31px;filter:drop-shadow(0 0 10px rgba(183,255,0,.22))}
+.feature h3{font-size:16px;margin:0 0 6px}.feature p{margin:0;color:#9a9d9e;font-size:12px;line-height:1.45}
+.tokenbar{display:grid;grid-template-columns:1.05fr .85fr .9fr 1.15fr .65fr 1fr;border:1px solid var(--border);border-radius:18px;background:#090b0b;margin-top:18px;overflow:hidden}
+.token{padding:23px 28px;border-right:1px solid var(--border)}.token:last-child{border-right:0}
+.token small{display:block;color:#777;font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-bottom:9px}
+.token strong{font-size:20px}.green{color:var(--green)}
+.token-action{display:flex;align-items:center;justify-content:center}
+.outline{border:1px solid var(--green);color:var(--green);border-radius:8px;padding:12px 22px;font-weight:800;font-size:14px}
+.community{text-align:center;padding:28px 0 70px}
+.community p{margin:0 0 14px;font-size:19px}.community b{color:var(--green)}
+.socials{display:flex;justify-content:center;gap:22px;color:#fff;font-size:26px}
+.section{padding:105px 0;border-top:1px solid rgba(255,255,255,.07)}
+.section-head{max-width:760px}.eyebrow{color:var(--green);font-size:12px;letter-spacing:2.5px;font-weight:900}
+.section h2{font-size:54px;letter-spacing:-3px;margin:12px 0 15px}.section .intro{color:var(--muted);line-height:1.7;font-size:17px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.card{border:1px solid var(--border);border-radius:16px;background:linear-gradient(180deg,#0c0e0e,#080909);padding:28px}
+.card .num{color:var(--green);font-size:12px;font-weight:900;letter-spacing:1.5px}
+.card h3{font-size:22px;margin:15px 0 9px}.card p{color:#929596;line-height:1.6;font-size:14px;margin:0}
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:35px}
+.faq .card{padding:24px}.faq h3{font-size:17px;margin:0 0 8px}
+footer{padding:34px 0;color:#6e7172;border-top:1px solid rgba(255,255,255,.07);font-size:12px}
+@media(max-width:1100px){
+ .links{gap:20px}.hero{grid-template-columns:1fr}.hero-art{height:500px;justify-content:center}.hero-art img{max-width:850px}
+ .features{grid-template-columns:1fr 1fr}.feature:nth-child(2){border-right:0}.feature{border-bottom:1px solid var(--border)}
+ .tokenbar{grid-template-columns:repeat(3,1fr)}.token:nth-child(3n){border-right:0}
+ .cards{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+ .container{width:calc(100% - 30px)}nav{height:72px}.brand{font-size:20px}.brand img{width:38px;height:38px}.links{display:none}
+ .nav-buy{padding:10px 12px;font-size:12px}.hero{padding-top:45px}.hero-art{height:350px;margin-top:20px}
+ .hero-art img{width:900px;max-width:none;transform:translateX(70px)}
+ h1{font-size:62px;letter-spacing:-4px}.lead{font-size:17px}.btn{height:52px;font-size:14px;padding:0 18px}
+ .features,.tokenbar{grid-template-columns:1fr}.feature,.token{border-right:0;border-bottom:1px solid var(--border)}
+ .feature:last-child,.token:last-child{border-bottom:0}.section{padding:75px 0}.section h2{font-size:40px}
+ .faq{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="container nav">
+  <a class="brand" href="#"><img src="bcat_logo_final.png" alt="">BCAT</a>
+  <div class="links">
+    <a class="active" href="#home">Home</a><a href="#about">About</a><a href="#tokenomics">Tokenomics</a>
+    <a href="#roadmap">Roadmap</a><a href="#buy">How to Buy</a><a href="#faq">FAQ</a>
+  </div>
+  <a class="nav-buy" id="navBuy" href="#">🚀 &nbsp;Buy on Pump.fun</a>
+</div>
+</nav>
+
+<main>
+<section class="container hero" id="home">
+  <div class="hero-copy">
+    <div class="kicker">SOLANA MEME COIN <span>•</span> BCAT</div>
+    <h1>BAD LUCK.<br><span class="green">GOOD<br>GAINS.</span></h1>
+    <p class="lead">They said black cats bring misfortune. But a black cat is just a cat — <strong>not bad luck.</strong> We're here to challenge that old superstition and <strong>prove them wrong.</strong></p>
+    <div class="actions">
+      <a class="btn primary" id="heroBuy" href="#">🚀 &nbsp;Buy on Pump.fun</a>
+      <a class="btn" href="#community">✈ &nbsp;Join Community</a>
+    </div>
+  </div>
+  <div class="hero-art"><img src="bcat_art_final.png" alt="Blackcat, coin and rising gains chart"></div>
+</section>
+
+<section class="container features">
+  <div class="feature"><div class="icon">♧</div><div><h3>Community Driven</h3><p>Powered by the community,<br>for the community.</p></div></div>
+  <div class="feature"><div class="icon">ϟ</div><div><h3>Fast &amp; Secure</h3><p>Built on Solana for speed,<br>low fees &amp; performance.</p></div></div>
+  <div class="feature"><div class="icon">↗</div><div><h3>100% Meme Energy</h3><p>No promises.<br>Just vibes and gains.</p></div></div>
+  <div class="feature"><div class="icon">♢</div><div><h3>LP Burned</h3><p>Liquidity tuned.<br>Here for the long run.</p></div></div>
+</section>
+
+<section class="container tokenbar">
+  <div class="token"><small>Token Name</small><strong>Blackcat</strong></div>
+  <div class="token"><small>Ticker</small><strong class="green">$BCAT</strong></div>
+  <div class="token"><small>Network</small><strong>◎ &nbsp;Solana</strong></div>
+  <div class="token"><small>Total Supply</small><strong>1,000,000,000</strong></div>
+  <div class="token"><small>Tax</small><strong class="green">0%</strong></div>
+  <div class="token token-action"><a class="outline" href="#tokenomics">View Tokenomics</a></div>
+</section>
+
+<section class="container community" id="community">
+  <p>Join the <b>Blackcat</b> movement</p>
+  <div class="socials"><a href="https://x.com/BCATofficial" target="_blank">𝕏</a><a id="telegram" href="#">✈</a><a href="#">◉</a></div>
+</section>
+
+<section class="section" id="about">
+<div class="container">
+  <div class="section-head"><div class="eyebrow">THE STORY</div><h2>The black cat was never bad luck.</h2>
+  <p class="intro">For generations, people have believed that black cats bring misfortune. But a black cat is simply a cat — not a symbol of bad luck. BCAT flips that old superstition into a story about good vibes, community and gains.</p></div>
+  <div class="cards">
+    <div class="card"><div class="num">01 / MYTH</div><h3>Challenge the superstition</h3><p>We take the old “black cat means bad luck” idea and turn it on its head.</p></div>
+    <div class="card"><div class="num">02 / COMMUNITY</div><h3>Build the movement</h3><p>Memes, creators and community participation are at the heart of Blackcat.</p></div>
+    <div class="card"><div class="num">03 / SOLANA</div><h3>Made for the chain</h3><p>A recognizable meme, a fast network and a community-first identity.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="tokenomics">
+<div class="container">
+  <div class="section-head"><div class="eyebrow">TOKENOMICS</div><h2>$BCAT</h2><p class="intro">Simple and transparent. Replace the placeholder contract with the verified launch address before publishing.</p></div>
+  <div class="cards">
+    <div class="card"><div class="num">SUPPLY</div><h3>1,000,000,000</h3><p>Total token supply.</p></div>
+    <div class="card"><div class="num">NETWORK</div><h3>Solana</h3><p>Fast transactions and low network fees.</p></div>
+    <div class="card"><div class="num">TAX</div><h3>0%</h3><p>No buy or sell tax stated here.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="roadmap">
+<div class="container">
+  <div class="section-head"><div class="eyebrow">ROADMAP</div><h2>From meme to movement.</h2></div>
+  <div class="cards">
+    <div class="card"><div class="num">PHASE 01</div><h3>Launch</h3><p>Build the identity, launch BCAT and grow the official X community.</p></div>
+    <div class="card"><div class="num">PHASE 02</div><h3>Grow</h3><p>Creators, memes, community events and consistent content.</p></div>
+    <div class="card"><div class="num">PHASE 03</div><h3>Expand</h3><p>Take Blackcat from a meme into a recognizable community brand.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="buy">
+<div class="container">
+  <div class="section-head"><div class="eyebrow">HOW TO BUY</div><h2>Catch the cat on-chain.</h2><p class="intro">Use the official Pump.fun link, verify the contract address and only trade what you can afford to lose. Meme coins are highly speculative.</p></div>
+  <div class="actions"><a class="btn primary" id="buyButton" href="#">🚀 &nbsp;Open Pump.fun</a></div>
+</div>
+</section>
+
+<section class="section" id="faq">
+<div class="container">
+  <div class="section-head"><div class="eyebrow">FAQ</div><h2>Straight answers.</h2></div>
+  <div class="faq">
+    <div class="card"><h3>Are black cats bad luck?</h3><p>No. That is an old superstition, not a fact. BCAT exists to challenge that misconception.</p></div>
+    <div class="card"><h3>What is BCAT?</h3><p>BCAT is a Solana meme coin built around the Blackcat character and the “good gains” story.</p></div>
+    <div class="card"><h3>Where can I buy it?</h3><p>Use the official Pump.fun button on this website and always verify the contract address.</p></div>
+    <div class="card"><h3>Is this financial advice?</h3><p>No. BCAT is a meme coin and crypto assets can be extremely volatile and speculative.</p></div>
+  </div>
+</div>
+</section>
+</main>
+
+<footer><div class="container">© 2026 BCAT / Blackcat &nbsp;•&nbsp; Not financial advice. Crypto assets are highly speculative.</div></footer>
+
+<script>
+/* Replace these with your real launch details */
+const PUMP_FUN_URL = "#";
+const TELEGRAM_URL = "#";
+["navBuy","heroBuy","buyButton"].forEach(id=>document.getElementById(id).href=PUMP_FUN_URL);
+document.getElementById("telegram").href=TELEGRAM_URL;
+</script>
+</body>
+</html>
